@@ -49,11 +49,14 @@ function App() {
           />
         ))}
       </div>
-      <div style={{ width: "100%" }}>
-        <ol style={{ color: "ivory" }}>
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <ol style={{ color: "#fd0" }} start="0">
+          <li>
+            <span style={{ color: "ivory" }}>Temat på nästa års spex</span>
+          </li>
           {rawData.map(d => (
             <li key={d.index}>
-              <span>{d.question}</span>
+              <span style={{ color: "ivory" }}>{d.question}</span>
             </li>
           ))}
         </ol>

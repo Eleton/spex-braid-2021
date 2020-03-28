@@ -10,17 +10,19 @@
 .header {
   font-family: "Courgette", cursive;
   color: ivory;
+  height: 64px;
   font-size: 2rem;
   background-color: #222;
   width: 100%;
-  text-align: center;
-  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .grid {
   display: grid;
   grid-gap: 1px;
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 10px;
 }
 

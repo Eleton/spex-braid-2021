@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 
 const Node = forwardRef(({ data, length, onChange, onBackspace }, ref) => {
-  // console.log(data);
   if (data.node === "empty") {
     return (
       <div
@@ -18,12 +17,23 @@ const Node = forwardRef(({ data, length, onChange, onBackspace }, ref) => {
     return (
       <div
         style={{
-          textAlign: "right",
-          transform: "translateX(-3px)",
+          verticalAlign: "bottom",
           color: "#fd0"
         }}
       >
-        {data.number}.
+        <span
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            transform: "translate(-3px)",
+            fontSize: "4vw"
+          }}
+        >
+          {data.number}.
+        </span>
       </div>
     );
   }
@@ -34,8 +44,8 @@ const Node = forwardRef(({ data, length, onChange, onBackspace }, ref) => {
       type="text"
       className="node"
       style={{
-        width: `calc(80vw / ${length}`,
-        height: `calc(80vw / ${length}`,
+        width: `calc(90vw / ${length}`,
+        height: `calc(90vw / ${length}`,
         backgroundColor: data.main ? "#fd0" : "ivory"
       }}
       value={data.value}
