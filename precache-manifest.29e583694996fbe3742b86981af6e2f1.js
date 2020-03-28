@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a10ff2363ac7ea605e16ed0491f9d327",
+    "revision": "81458c333d01fff6acc326356ce4dac0",
     "url": "/spex-braid-2021/index.html"
   },
   {
-    "revision": "36f03c1b5645f078e34d",
+    "revision": "ecd65956e4c98e0de414",
     "url": "/spex-braid-2021/static/css/main.1b790c80.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/spex-braid-2021/static/js/2.c651ef48.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "36f03c1b5645f078e34d",
-    "url": "/spex-braid-2021/static/js/main.840697cb.chunk.js"
+    "revision": "ecd65956e4c98e0de414",
+    "url": "/spex-braid-2021/static/js/main.c3bae43e.chunk.js"
   },
   {
     "revision": "28d4b8b68feeec980f94",
