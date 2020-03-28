@@ -40,14 +40,14 @@ const rawData = [
     index: 8,
     text: "SCOUTER",
     offset: 4,
-    question: "Samlar lappar men saknar ovvar"
+    question: "Samlar tyglappar men saknar ovvar"
   },
   { index: 9, text: "T", offset: 0, question: "Ett T" },
   {
     index: 10,
-    text: "ELISABETH",
+    text: "ELIZABETH",
     offset: 0,
-    question: "Världens äldsta monark"
+    question: "Namnet på en årsrik matriark"
   }
 ];
 
