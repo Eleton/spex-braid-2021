@@ -1,24 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef } from "react";
+import "./App.css";
+import Node from "./Node";
+import { rawData, data, length } from "./data";
 
 function App() {
+  const [state, setState] = useState(data);
+  const refs = useRef({});
+
+  const onBackspace = index => e => {
+    if (
+      state[index].value === "" &&
+      e.keyCode === 8 &&
+      state[index - 1].node === "input"
+    ) {
+      refs.current[index - 1].focus();
+    }
+  };
+
+  const onChange = index => e => {
+    if (e.target.value.length > 1) {
+      return;
+    }
+    const value = e.target.value.toUpperCase();
+    const tempData = [...state];
+    tempData[index].value = value;
+    setState(tempData);
+    if (value.length === 1) {
+      refs.current[index + 1].focus();
+    }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="header">Manusflätan 20/21</header>
+      <div
+        className="grid"
+        style={{
+          gridTemplateColumns: `repeat(${length}, 1fr`
+        }}
+      >
+        {state.map(data => (
+          <Node
+            ref={el => (refs.current[data.key] = el)}
+            key={data.key}
+            data={data}
+            length={length}
+            onChange={onChange(data.key)}
+            onBackspace={onBackspace(data.key)}
+          />
+        ))}
+      </div>
+      <div style={{ width: "100%" }}>
+        <ol style={{ color: "ivory" }}>
+          {rawData.map(d => (
+            <li key={d.index}>
+              <span>{d.question}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   );
 }
