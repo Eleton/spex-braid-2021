@@ -17,11 +17,10 @@ function App() {
   }, [state]);
 
   useEffect(() => {
-    if (!localStorage.getItem("braidData")) {
-      const answers = JSON.stringify(state.map(d => d.value));
-      localStorage.setItem("braidData", answers);
+    const answers = getStorage();
+    if (!answers) {
+      setStorage(state.map(d => d.value));
     } else {
-      const answers = JSON.parse(localStorage.getItem("braidData"));
       const tempState = state.map((d, i) => {
         if (d.node === "input") {
           return { ...d, value: answers[i] };
@@ -32,12 +31,6 @@ function App() {
       setState(tempState);
     }
   }, []);
-
-  const updateStorage = (value, index) => {
-    const answers = JSON.parse(localStorage.getItem("braidData"));
-    answers[index] = value;
-    localStorage.setItem("braidData", JSON.stringify(answers));
-  };
 
   const onBackspace = index => e => {
     if (
@@ -103,3 +96,19 @@ function App() {
 }
 
 export default App;
+
+const updateStorage = (value, index) => {
+  const answers = getStorage();
+  answers[index] = value;
+  setStorage(answers);
+};
+
+const setStorage = answers => {
+  localStorage.setItem("braidData", JSON.stringify(answers));
+};
+
+const getStorage = () => {
+  try {
+    return JSON.parse(localStorage.getItem("braidData"));
+  } catch (e) {}
+};
