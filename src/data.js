@@ -62,30 +62,19 @@ const right = rawData.reduce(
 );
 const length = left + right + 1;
 
-const emptyNodes = num => new Array(num > 0 ? num : 0).fill({ node: "empty" });
-
 const mutatedData = rawData.map(word => {
   return [
-    ...emptyNodes(left - word.offset),
-    { node: "number", number: word.index },
+    { node: "number", number: word.index, offset: word.offset },
     ...word.text.split("").map((letter, letterIndex) => ({
       node: "input",
       letter,
       main: letterIndex === word.offset,
       value: "",
     })),
-    ...emptyNodes(right - (word.text.length - word.offset)),
   ];
 });
-const data = [
-  [
-    ...emptyNodes(left + 1),
-    { node: "number", number: 0 },
-    ...emptyNodes(right - 1),
-  ],
-  ...mutatedData,
-]
+const data = [[{ node: "number", number: 0, offset: -1 }], ...mutatedData]
   .flat()
-  .map((d, key) => ({ ...d, key }));
+  .map((d, key) => ({ ...d, key, column: left - d.offset }));
 
 export { rawData, data, length };

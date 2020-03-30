@@ -2,23 +2,12 @@ import React, { forwardRef } from "react";
 
 const Node = forwardRef(
   ({ data, length, onChange, onBackspace, finished }, ref) => {
-    if (data.node === "empty") {
-      return (
-        <div
-          ref={ref}
-          style={{
-            width: `calc(90vw / ${length}`,
-            height: `calc(90vw / ${length}`,
-          }}
-        />
-      );
-    }
-
     if (data.node === "number") {
       return (
         <div
           className={`text-gold ${finished && "fadeNode"}`}
           style={{
+            gridColumn: data.column + 1,
             verticalAlign: "bottom",
           }}
         >
