@@ -17,25 +17,12 @@ const Node = forwardRef(
     if (data.node === "number") {
       return (
         <div
-          className={finished && "fadeNode"}
+          className={`text-gold ${finished && "fadeNode"}`}
           style={{
             verticalAlign: "bottom",
-            color: "#fd0"
           }}
         >
-          <span
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "flex-end",
-              transform: "translate(-3px)",
-              fontSize: "4vw"
-            }}
-          >
-            {data.number}.
-          </span>
+          <span className="rowNumber">{data.number}.</span>
         </div>
       );
     }
