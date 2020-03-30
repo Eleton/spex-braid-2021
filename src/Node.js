@@ -5,7 +5,7 @@ const Node = forwardRef(
     if (data.node === "number") {
       return (
         <div
-          className={`text-gold ${finished && "fadeNode"}`}
+          className={classes(["text-gold", finished && "fadeNode"])}
           style={{
             gridColumn: data.column + 1,
             verticalAlign: "bottom",
@@ -18,7 +18,7 @@ const Node = forwardRef(
 
     return (
       <input
-        className={`node ${finished && !data.main && "fadeNode"}`}
+        className={classes(["node", finished && !data.main && "fadeNode"])}
         ref={ref}
         type="text"
         style={{
@@ -33,5 +33,9 @@ const Node = forwardRef(
     );
   },
 );
+
+function classes(classList) {
+  return classList.filter(Boolean).join(" ");
+}
 
 export default Node;
