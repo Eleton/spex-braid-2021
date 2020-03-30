@@ -42,6 +42,21 @@ function App() {
     }
   };
 
+  const selectNextNode = index => {
+    let node = refs.current[index + 1];
+    if (node) {
+      node.focus();
+    } else {
+      // If the node at refs.current[index] is the last of it's row,
+      // the next input row will be at index + 2 due to the number
+      // nodes
+      node = refs.current[index + 2];
+      if (node) {
+        node.focus();
+      }
+    }
+  };
+
   const onChange = index => e => {
     if (e.target.value.length > 1) {
       return;
@@ -52,7 +67,7 @@ function App() {
     setState(tempData);
     updateStorage(value, index);
     if (value.length === 1) {
-      refs.current[index + 1].focus();
+      selectNextNode(index);
     }
   };
 
