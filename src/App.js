@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Node from "./Node";
 import { rawData, data, length } from "./data";
+import { updateStorage, setStorage, getStorage } from "./storage";
 
 function App() {
   const [state, setState] = useState(data);
@@ -111,19 +112,3 @@ function App() {
 }
 
 export default App;
-
-const updateStorage = (value, index) => {
-  const answers = getStorage();
-  answers[index] = value;
-  setStorage(answers);
-};
-
-const setStorage = answers => {
-  localStorage.setItem("braidData", JSON.stringify(answers));
-};
-
-const getStorage = () => {
-  try {
-    return JSON.parse(localStorage.getItem("braidData"));
-  } catch (e) {}
-};
