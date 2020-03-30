@@ -70,7 +70,7 @@ function App() {
         <div
           className="grid"
           style={{
-            gridTemplateColumns: `repeat(${length}, 1fr`
+            gridTemplateColumns: `repeat(${length}, 1fr`,
           }}
         >
           {state.map(data => (

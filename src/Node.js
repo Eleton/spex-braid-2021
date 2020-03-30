@@ -8,7 +8,7 @@ const Node = forwardRef(
           ref={ref}
           style={{
             width: `calc(90vw / ${length}`,
-            height: `calc(90vw / ${length}`
+            height: `calc(90vw / ${length}`,
           }}
         />
       );
@@ -48,14 +48,14 @@ const Node = forwardRef(
         style={{
           width: `calc(90vw / ${length}`,
           height: `calc(90vw / ${length}`,
-          backgroundColor: data.main ? "#fd0" : "ivory"
+          backgroundColor: data.main ? "#fd0" : "ivory",
         }}
         value={data.value}
         onChange={onChange}
         onKeyDown={onBackspace}
       />
     );
-  }
+  },
 );
 
 export default Node;
