@@ -17,19 +17,26 @@ const Node = forwardRef(
     }
 
     return (
-      <input
-        className={classes(["node", finished && !data.main && "fadeNode"])}
-        ref={ref}
-        type="text"
+      <div
         style={{
-          width: `calc(90vw / ${length}`,
-          height: `calc(90vw / ${length}`,
-          backgroundColor: data.main ? "#fd0" : "ivory",
+          width: `calc(90vw / ${length})`,
+          height: `calc(90vw / ${length})`,
         }}
-        value={data.value}
-        onChange={onChange}
-        onKeyDown={onBackspace}
-      />
+      >
+        <input
+          className={classes(["node", finished && !data.main && "fadeNode"])}
+          ref={ref}
+          type="text"
+          style={{
+            width: "calc(100% - 4px)",
+            height: "calc(100% - 4px)",
+            backgroundColor: data.main ? "#fd0" : "ivory",
+          }}
+          value={data.value}
+          onChange={onChange}
+          onKeyDown={onBackspace}
+        />
+      </div>
     );
   },
 );
