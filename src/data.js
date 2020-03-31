@@ -60,38 +60,21 @@ const right = rawData.reduce(
     next.text.length - next.offset > acc ? next.text.length - next.offset : acc,
   0
 );
-const length = 2 + left + right;
+const length = left + right + 1;
 
 const mutatedData = rawData.map(word => {
   return [
-    ...new Array(left - word.offset).fill({
-      node: "empty"
-    }),
-    { node: "number", number: word.index },
+    { node: "number", number: word.index, offset: word.offset },
     ...word.text.split("").map((letter, letterIndex) => ({
       node: "input",
       letter,
       main: letterIndex === word.offset,
       value: ""
-    })),
-    ...new Array(right - (word.text.length - word.offset) + 1).fill({
-      node: "empty"
-    })
+    }))
   ];
 });
-const data = [
-  [
-    ...new Array(left + 1).fill({
-      node: "empty"
-    }),
-    { node: "number", number: 0 },
-    ...new Array(right).fill({
-      node: "empty"
-    })
-  ],
-  ...mutatedData
-]
+const data = [[{ node: "number", number: 0, offset: -1 }], ...mutatedData]
   .flat()
-  .map((d, key) => ({ ...d, key }));
+  .map((d, key) => ({ ...d, key, column: left - d.offset }));
 
 export { rawData, data, length };

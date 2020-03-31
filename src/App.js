@@ -17,11 +17,10 @@ function App() {
   }, [state]);
 
   useEffect(() => {
-    if (!localStorage.getItem("braidData")) {
-      const answers = JSON.stringify(state.map(d => d.value));
-      localStorage.setItem("braidData", answers);
+    const answers = getStorage();
+    if (!answers) {
+      setStorage(state.map(d => d.value));
     } else {
-      const answers = JSON.parse(localStorage.getItem("braidData"));
       const tempState = state.map((d, i) => {
         if (d.node === "input") {
           return { ...d, value: answers[i] };
@@ -33,12 +32,6 @@ function App() {
     }
   }, []);
 
-  const updateStorage = (value, index) => {
-    const answers = JSON.parse(localStorage.getItem("braidData"));
-    answers[index] = value;
-    localStorage.setItem("braidData", JSON.stringify(answers));
-  };
-
   const onBackspace = index => e => {
     if (
       state[index].value === "" &&
@@ -46,6 +39,21 @@ function App() {
       state[index - 1].node === "input"
     ) {
       refs.current[index - 1].focus();
+    }
+  };
+
+  const selectNextNode = index => {
+    let node = refs.current[index + 1];
+    if (node) {
+      node.focus();
+    } else {
+      // If the node at refs.current[index] is the last of it's row,
+      // the next input row will be at index + 2 due to the number
+      // nodes
+      node = refs.current[index + 2];
+      if (node) {
+        node.focus();
+      }
     }
   };
 
@@ -59,7 +67,7 @@ function App() {
     setState(tempData);
     updateStorage(value, index);
     if (value.length === 1) {
-      refs.current[index + 1].focus();
+      selectNextNode(index);
     }
   };
 
@@ -70,7 +78,7 @@ function App() {
         <div
           className="grid"
           style={{
-            gridTemplateColumns: `repeat(${length}, 1fr`
+            gridTemplateColumns: `repeat(${length}, 1fr`,
           }}
         >
           {state.map(data => (
@@ -85,16 +93,14 @@ function App() {
             />
           ))}
         </div>
-        <div
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-        >
-          <ol style={{ color: "#fd0" }} start="0">
+        <div className="cluesList text-gold">
+          <ol start="0">
             <li>
-              <span style={{ color: "ivory" }}>Temat på nästa års spex</span>
+              <span className="text-white">Temat på nästa års spex</span>
             </li>
             {rawData.map(d => (
               <li key={d.index}>
-                <span style={{ color: "ivory" }}>{d.question}</span>
+                <span className="text-white">{d.question}</span>
               </li>
             ))}
           </ol>
@@ -105,3 +111,19 @@ function App() {
 }
 
 export default App;
+
+const updateStorage = (value, index) => {
+  const answers = getStorage();
+  answers[index] = value;
+  setStorage(answers);
+};
+
+const setStorage = answers => {
+  localStorage.setItem("braidData", JSON.stringify(answers));
+};
+
+const getStorage = () => {
+  try {
+    return JSON.parse(localStorage.getItem("braidData"));
+  } catch (e) {}
+};

@@ -2,60 +2,47 @@ import React, { forwardRef } from "react";
 
 const Node = forwardRef(
   ({ data, length, onChange, onBackspace, finished }, ref) => {
-    if (data.node === "empty") {
-      return (
-        <div
-          ref={ref}
-          style={{
-            width: `calc(90vw / ${length}`,
-            height: `calc(90vw / ${length}`
-          }}
-        />
-      );
-    }
-
     if (data.node === "number") {
       return (
         <div
-          className={finished && "fadeNode"}
+          className={classes(["text-gold", finished && "fadeNode"])}
           style={{
+            gridColumn: data.column + 1,
             verticalAlign: "bottom",
-            color: "#fd0"
           }}
         >
-          <span
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "flex-end",
-              transform: "translate(-3px)",
-              fontSize: "4vw"
-            }}
-          >
-            {data.number}.
-          </span>
+          <span className="rowNumber">{data.number}.</span>
         </div>
       );
     }
 
     return (
-      <input
-        className={`node ${finished && !data.main && "fadeNode"}`}
-        ref={ref}
-        type="text"
+      <div
         style={{
-          width: `calc(90vw / ${length}`,
-          height: `calc(90vw / ${length}`,
-          backgroundColor: data.main ? "#fd0" : "ivory"
+          width: `calc(90vw / ${length})`,
+          height: `calc(90vw / ${length})`,
         }}
-        value={data.value}
-        onChange={onChange}
-        onKeyDown={onBackspace}
-      />
+      >
+        <input
+          className={classes(["node", finished && !data.main && "fadeNode"])}
+          ref={ref}
+          type="text"
+          style={{
+            width: "calc(100% - 4px)",
+            height: "calc(100% - 4px)",
+            backgroundColor: data.main ? "#fd0" : "ivory",
+          }}
+          value={data.value}
+          onChange={onChange}
+          onKeyDown={onBackspace}
+        />
+      </div>
     );
-  }
+  },
 );
+
+function classes(classList) {
+  return classList.filter(Boolean).join(" ");
+}
 
 export default Node;
