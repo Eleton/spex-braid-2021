@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/spex-braid-2021/precache-manifest.110f6a6b9900784285550e694105dd28.js"
+  "/spex-braid-2021/precache-manifest.4b8354e8903d146eae64473c494990a3.js"
 );
 
 self.addEventListener('message', (event) => {
