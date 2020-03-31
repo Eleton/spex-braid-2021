@@ -4,6 +4,7 @@
 
 .text-white {
   color: ivory;
+  font-size: 0.8rem;
 }
 
 .App {
@@ -39,18 +40,13 @@
 
 .grid {
   display: grid;
-  grid-gap: 1px;
+  grid-gap: 3px;
   padding-top: 20px;
   padding-bottom: 10px;
 }
 
 .rowNumber {
-  width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  transform: translate(-3px);
   font-size: 4vw;
 }
 
