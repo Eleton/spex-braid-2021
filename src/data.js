@@ -3,20 +3,20 @@ const rawData = [
     index: 1,
     text: "BAPTIST",
     offset: 0,
-    question: "Protestant som gillar att bada"
+    question: "Frikyrklig som gillar att bada"
   },
   { index: 2, text: "SPEX", offset: 2, question: "Ett sorts kul spektakel" },
   {
     index: 3,
     text: "OMSTART",
     offset: 5,
-    question: "Frekvent oral åhörarorder"
+    question: "Verbal order om upprepning"
   },
   {
     index: 4,
     text: "NAPOLEON",
     offset: 0,
-    question: "En småvuxen komplex korsikan"
+    question: "En komplex korsikan"
   },
   {
     index: 5,
@@ -34,7 +34,7 @@ const rawData = [
     index: 7,
     text: "BLOCKAD",
     offset: 2,
-    question: "Konjunktursaboterande filter mellan USA och Kina"
+    question: "Potentiellt konjunktursaboterande hinder mellan USA och Kina"
   },
   {
     index: 8,
@@ -42,7 +42,7 @@ const rawData = [
     offset: 4,
     question: "Samlar tyglappar men saknar ovvar"
   },
-  { index: 9, text: "T", offset: 0, question: "Ett T" },
+  { index: 9, text: "KONTRABAND", offset: 0, question: "Smuggelgods" },
   {
     index: 10,
     text: "ELIZABETH",
