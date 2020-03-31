@@ -42,7 +42,7 @@ const rawData = [
     offset: 4,
     question: "Samlar tyglappar men saknar ovvar"
   },
-  { index: 9, text: "KONTRABAND", offset: 0, question: "Smuggelgods" },
+  { index: 9, text: "KONTRABAND", offset: 3, question: "Smuggelgods" },
   {
     index: 10,
     text: "ELIZABETH",
