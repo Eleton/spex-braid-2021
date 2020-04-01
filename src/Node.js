@@ -8,7 +8,8 @@ const Node = forwardRef(
           className={classes(["text-gold", finished && "fadeNode"])}
           style={{
             gridColumn: data.column + 1,
-            verticalAlign: "bottom",
+            justifySelf: "end",
+            alignSelf: "end"
           }}
         >
           <span className="rowNumber">{data.number}.</span>
@@ -19,8 +20,8 @@ const Node = forwardRef(
     return (
       <div
         style={{
-          width: `calc(90vw / ${length})`,
-          height: `calc(90vw / ${length})`,
+          width: `calc(100vw / ${length} - 4px)`,
+          height: `calc(100vw / ${length} - 4px)`
         }}
       >
         <input
@@ -28,9 +29,9 @@ const Node = forwardRef(
           ref={ref}
           type="text"
           style={{
-            width: "calc(100% - 4px)",
-            height: "calc(100% - 4px)",
-            backgroundColor: data.main ? "#fd0" : "ivory",
+            width: "100%",
+            height: "100%",
+            backgroundColor: data.main ? "#fd0" : "ivory"
           }}
           value={data.value}
           onChange={onChange}
@@ -38,7 +39,7 @@ const Node = forwardRef(
         />
       </div>
     );
-  },
+  }
 );
 
 function classes(classList) {
