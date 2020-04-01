@@ -64,6 +64,12 @@
   height: 100%;
 }
 
+@media only screen and (min-width: 600px) {
+  .node {
+    font-size: 18pt;
+  }
+}
+
 .fadeNode {
   animation-duration: 5s;
   animation-name: fadeout;
