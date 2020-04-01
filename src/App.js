@@ -4,6 +4,11 @@ import Node from "./Node";
 import { rawData, data, length } from "./data";
 import { updateStorage, setStorage, getStorage } from "./storage";
 
+console.log(
+  "Stopp där! Det ser nästan ut som att du försöker lista ut svaren genom att fuskläsa i koden. 😧\n\n" +
+    "This incident will be reported. https://xkcd.com/838/",
+);
+
 function App() {
   const [state, setState] = useState(data);
   const [finished, setFinished] = useState(false);
