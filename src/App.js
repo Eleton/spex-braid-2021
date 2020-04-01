@@ -9,17 +9,17 @@ console.log(
     "This incident will be reported. https://xkcd.com/838/",
 );
 
+function isFinished(state) {
+  return state.filter(d => d.node === "input").every(d => d.value === d.letter);
+}
+
 function App() {
   const [state, setState] = useState(data);
   const [finished, setFinished] = useState(false);
   const refs = useRef({});
 
   useEffect(() => {
-    if (
-      state.filter(d => d.node === "input").every(d => d.value === d.letter)
-    ) {
-      setFinished(true);
-    }
+    if (isFinished(state)) setFinished(true);
   }, [state]);
 
   useEffect(() => {
